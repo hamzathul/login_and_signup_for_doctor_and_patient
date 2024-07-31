@@ -1,0 +1,39 @@
+{% extends 'patient/home_index.html' %}
+{% block body %}
+
+
+<body><form action="/myapp/view_patient/" method="post">
+<table class="pull-left mb-3 mt-3" >
+        {% csrf_token %}
+
+
+</table>
+    <table class="table table-bordered">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+        <th>Profile Picture</th>
+
+      <th>E-mail</th>
+      <th>Address</th>
+      <td>City</td>
+      <td>State</td>
+      <td>Pincode</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ i.fname }}&nbsp;</td>
+      <td>{{ i.lname }}&nbsp;</td>
+        <td><a href="{{ i.photo }}"> <img src="{{ i.photo }}" height="70px" width="70px" ></a></td>
+
+      <td>{{ i.email }}</td>
+      <td>{{ i.address }}</td>
+      <td>{{ i.city }}</td>
+      <td>{{ i.state }}</td>
+      <td>{{ i.pincode }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
